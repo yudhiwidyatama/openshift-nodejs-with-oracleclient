@@ -6,7 +6,7 @@ RUN rpm -ivh http://mirror.centos.org/centos/7/os/x86_64/Packages/libaio-0.3.109
     rpm -Uvh oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm && \
     rpm -Uvh oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64.rpm
 RUN sed -i   's/npm install/npm install -g yarn \&\& yarn install/g' /usr/libexec/s2i/assemble
-RUN echo 'pm2 startOrRestart ecosystem.config.js --update-env && sleep 5000' > /usr/libexec/s2i/run
+RUN echo 'bin/www' > /usr/libexec/s2i/run
 USER 1001
 ENV LD_LIBRARY_PATH="/usr/lib/oracle/12.2/client64/lib":$LD_LIBRARY_PATH
 ENV OCI_HOME="/usr/lib/oracle/12.2/client64"
